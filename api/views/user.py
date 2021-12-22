@@ -1,4 +1,4 @@
-from flask import Blueprint, request, make_response, jsonify, abort
+from flask import Blueprint, request, make_response, jsonify, abort, render_template
 from api.models import User, UserSchema
 import json
 from werkzeug.exceptions import BadRequest
@@ -19,6 +19,17 @@ def getUserList():
       'code': 200,
       'users': user_schema.dump(users)
     }))
+
+@user_router.route('/users/list', methods=['GET']) #整形されたview: ディレクトリのリファクタは後で
+def showUserList():
+  users = User.getUserList()
+  user_schema = UserSchema(many=True)
+  
+  if len(users) == 0:
+    return "no users found";
+  else:
+    return render_template('index.html', title = 'index.html')
+
 
 @user_router.route('/users', methods=['POST'])
 def registUser():
