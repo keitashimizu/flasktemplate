@@ -1,2 +1,5 @@
 myflask/*
 .DS_store
+test.py
+__pycache__
+*/__pycache__
