@@ -28,7 +28,7 @@ def showUserList():
   if len(users) == 0:
     return "no users found";
   else:
-    return render_template('index.html', title = 'index.html')
+    return render_template('user_list.html', title = 'user_list.html')
 
 @user_router.route('/users/new', methods=['GET']) #新規作成用フォーム
 def showUserForm():

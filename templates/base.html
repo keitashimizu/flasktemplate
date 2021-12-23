@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
@@ -18,7 +18,7 @@
       href="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.css"
     />
 
-    <title>User一覧</title>
+    <title>{{ title }}</title>
   </head>
   <body>
     <!-- Popper and Bootstrap JS -->
@@ -46,18 +46,8 @@
     <!-- js -->
     <script src="../../static/js/script.js" charset="UTF-8"></script>
 
-    <h1>User</h1>
-    <div>以下のユーザが登録されています</div>
-    <table id="main_table" class="table">
-      <thead>
-        <tr>
-          <th data-field="id">ID</th>
-          <th data-field="name">Name</th>
-          <th data-field="address">Address</th>
-          <th data-field="mail">Mail</th>
-          <th data-field="tel">Tel</th>
-        </tr>
-      </thead>
-    </table>
+    {% block content %}
+    <!-- main-->
+    {% endblock %}
   </body>
 </html>

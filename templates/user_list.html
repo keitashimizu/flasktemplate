@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>User</h1>
+<div>以下のユーザが登録されています</div>
+<table id="main_table" class="table">
+  <thead>
+    <tr>
+      <th data-field="id">ID</th>
+      <th data-field="name">Name</th>
+      <th data-field="address">Address</th>
+      <th data-field="mail">Mail</th>
+      <th data-field="tel">Tel</th>
+    </tr>
+  </thead>
+</table>
+{% endblock %}

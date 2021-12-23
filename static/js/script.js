@@ -30,13 +30,10 @@ var parseJson = function (data) {
   }
   return returnJson;
 };
-
-console.log("shown");
 $(document).ready(function () {
   $("#user_form").submit(function () {
     var data = $("#user_form").serializeArray();
     data = parseJson(data);
-    alert(JSON.stringify(data));
     $.ajax({
       type: "post",
       dataType: "json",
