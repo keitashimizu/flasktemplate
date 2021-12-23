@@ -30,6 +30,9 @@ def showUserList():
   else:
     return render_template('index.html', title = 'index.html')
 
+@user_router.route('/users/new', methods=['GET']) #新規作成用フォーム
+def showUserForm():
+    return render_template('user_new.html', title = 'new.htmll')
 
 @user_router.route('/users', methods=['POST'])
 def registUser():

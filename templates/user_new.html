@@ -18,7 +18,7 @@
       href="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.css"
     />
 
-    <title>User一覧</title>
+    <title>ユーザ登録</title>
   </head>
   <body>
     <!-- Popper and Bootstrap JS -->
@@ -47,17 +47,26 @@
     <script src="../../static/js/script.js" charset="UTF-8"></script>
 
     <h1>User</h1>
-    <div>以下のユーザが登録されています</div>
-    <table id="main_table" class="table">
-      <thead>
-        <tr>
-          <th data-field="id">ID</th>
-          <th data-field="name">Name</th>
-          <th data-field="address">Address</th>
-          <th data-field="mail">Mail</th>
-          <th data-field="tel">Tel</th>
-        </tr>
-      </thead>
-    </table>
+    <div>以下のユーザを登録します</div>
+
+    <form id="user_form" action="/api/users/list" accept-charset="UTF-8" method="get">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" name="name" />
+      </div>
+      <div class="form-group">
+        <label for="address">Address:</label>
+        <input type="text" class="form-control" id="address" name="address" />
+      </div>
+      <div class="form-group">
+        <label for="mail">Email address:</label>
+        <input type="email" class="form-control" id="mail" name="mail" />
+      </div>
+      <div class="form-group">
+        <label for="tel">Tel:</label>
+        <input type="number" class="form-control" id="tel" name="tel" />
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
   </body>
 </html>
