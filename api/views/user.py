@@ -7,9 +7,10 @@ from myexception import MyException, InputException, ServerException
 # ルーティング設定
 user_router = Blueprint('user_router', __name__)
 
-@user_router.route('/users', methods=['GET'])
+@user_router.route('/users', methods=['GET']) #一覧取得api
 def getUserList():
-  users = User.getUserList()
+  page = request.args.get('page', default=None, type=int)
+  users = User.getUserList(page=page)
   user_schema = UserSchema(many=True)
   
   if len(users) == 0:
@@ -22,9 +23,12 @@ def getUserList():
 
 @user_router.route('/users/list', methods=['GET']) #整形されたview: ディレクトリのリファクタは後で
 def showUserList():
-  users = User.getUserList()
-  user_schema = UserSchema(many=True)
-  
+  #page = request.args.get('page', default=None, type=int)
+  #print(page)
+  #users = User.getUserList(page=page)
+  #print(users)
+  #user_schema = UserSchema(many=True)
+  return render_template('user_list.html', title = 'user_list.html')
   if len(users) == 0:
     return "no users found";
   else:
@@ -34,7 +38,7 @@ def showUserList():
 def showUserForm():
     return render_template('user_new.html', title = 'new.htmll')
 
-@user_router.route('/users', methods=['POST'])
+@user_router.route('/users', methods=['POST']) #新規作成api
 def registUser():
   if request.headers["Content-Type"] != "application/json":
     raise BadRequest

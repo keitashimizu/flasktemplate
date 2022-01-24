@@ -14,7 +14,7 @@ $.ajax({
   dataType: "json",
   scriptCharset: "UTF-8",
   timeout: 10000,
-  url: "/api/users",
+  url: "/api/users" + $(location).attr('search'),
 }).done(function (data, status, xhr) {
   user_data = data["users"];
   //alert(JSON.stringify(user_data))
@@ -30,6 +30,7 @@ var parseJson = function (data) {
   }
   return returnJson;
 };
+
 $(document).ready(function () {
   $("#user_form").submit(function () {
     var data = $("#user_form").serializeArray();

@@ -2,3 +2,7 @@
 ・かっちょいいテンプレート適用
 ・テーブル定義とサンプルデータのExport
 ・ページング機構の実装
+  - apiにpaging機能を実装 v
+  - templateでpager実装 v
+  - next/prevの挙動
+  - 非同期

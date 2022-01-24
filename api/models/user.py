@@ -13,9 +13,13 @@ class User(db.Model):
   def __repr__(self):
     return '<User %r>' % self.name
 
-  def getUserList():
+  def getUserList(page):
     # select * from users
-    user_list = db.session.query(User).all()
+    if page is None:
+      user_list = db.session.query(User).all()
+    else:
+      pagesize = 20
+      user_list = db.session.query(User).limit(pagesize).offset((page-1)* pagesize).all()
     #print("********user_list********") 
     #print(user_list) #[None]
     #print(user_list.__class__) #List
