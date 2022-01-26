@@ -23,16 +23,22 @@ def getUserList():
 
 @user_router.route('/users/list', methods=['GET']) #整形されたview: ディレクトリのリファクタは後で
 def showUserList():
+  selected_page = request.args.get('page', default=1, type=int)
+  if selected_page < 3:
+    minimum_page = 1
+  else:
+    minimum_page = selected_page-2
+  return render_template('user_list.html', title = 'user_list.html', selected_page = selected_page, pager_list=list(range(minimum_page, minimum_page+7)))
+  #jsで非同期取得にしたため以下不要
   #page = request.args.get('page', default=None, type=int)
   #print(page)
   #users = User.getUserList(page=page)
   #print(users)
   #user_schema = UserSchema(many=True)
-  return render_template('user_list.html', title = 'user_list.html')
-  if len(users) == 0:
-    return "no users found";
-  else:
-    return render_template('user_list.html', title = 'user_list.html')
+  #if len(users) == 0:
+  #  return "no users found";
+  #else:
+  #  return render_template('user_list.html', title = 'user_list.html')
 
 @user_router.route('/users/new', methods=['GET']) #新規作成用フォーム
 def showUserForm():
